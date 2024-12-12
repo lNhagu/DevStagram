@@ -36,7 +36,7 @@
             @yield('contenido')
         </main>
 
-        <footer class="text-center p-5 font-semibold text-gray-600">
+        <footer class=" text-sm text-center p-5 font-semibold text-gray-600">
             © DevStagram - Todos los derechos reservados - {{ now()->year }}
         </footer>
 
