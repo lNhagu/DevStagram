@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <title>DevStagram - @yield('titulo')</title>
         @vite('resources/css/app.css')
         
@@ -19,7 +19,7 @@
                 </h1>
 
                 <nav class="">
-                    <a class="font-bold text-gray-600 p-1" href="#">Login</a>
+                    <a class="font-bold text-gray-600 p-1" href="/login">Login</a>
                     <a class="font-bold text-gray-600 p-1" href="/register">Sing up</a>
                 </nav>
                 
@@ -29,14 +29,14 @@
 
         </header>
 
-        <main class="container mx-auto mt-10">
-            <h2 class="font-bold text-center text-3xl mb-3">
+        <main class="container mx-auto mt-3">
+            {{-- <h2 class="font-bold text-center text-3xl mb-3">
                 @yield('titulo')
-            </h2>
+            </h2> --}}
             @yield('contenido')
         </main>
 
-        <footer class=" text-sm text-center p-5 font-semibold text-gray-600">
+        <footer class=" text-sm text-center p-5 font-semibold text-gray-400">
             © DevStagram - Todos los derechos reservados - {{ now()->year }}
         </footer>
 

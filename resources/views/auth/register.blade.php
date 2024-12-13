@@ -1,74 +1,125 @@
 @extends('layouts.app')
 
-{{-- @section('titulo')
-    Registrate en DevStagram
-@endsection --}}
+@section('titulo') 
+Sign up in DevStagram 
+@endsection
 
 @section('contenido')
-<div class="bg-gray-100 flex items-center justify-center p-4">
-    <div class="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-2xl">
-        <div class="text-center">
-            <img class="mx-auto h-16 w-auto rounded-full" src="https://images.unsplash.com/photo-1611162617474-5b21e879e113" alt="Social Media Logo">
-            <h2 class="mt-6 text-3xl font-extrabold text-gray-900">Welcome back</h2>
-            <p class="mt-2 text-sm text-gray-600">Sign in to your account</p>
-        </div>
-        <form class="mt-8 space-y-6">
-            <div class="space-y-4">
-                <div>
-                    <label for="email" class="sr-only">Email address</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <i class="fas fa-envelope text-gray-400"></i>
-                        </div>
-                        <input id="email" name="email" type="email" required class="appearance-none relative block w-full px-3 py-3 pl-10 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" placeholder="Email address">
-                    </div>
-                </div>
-                <div>
-                    <label for="password" class="sr-only">Password</label>
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <i class="fas fa-lock text-gray-400"></i>
-                        </div>
-                        <input id="password" name="password" type="password" required class="appearance-none relative block w-full px-3 py-3 pl-10 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" placeholder="Password">
+
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="flex w-full max-w-6xl shadow-2xl rounded-2xl overflow-hidden bg-white">
+            <div class="hidden lg:block lg:w-1/2 relative">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3" alt="Social Network" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3'">
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/60">
+                    <div class="absolute bottom-10 left-10 text-white">
+                        <h2 class="text-3xl font-bold">Connect with friends</h2>
+                        <p class="mt-2">Join our growing community today</p>
                     </div>
                 </div>
             </div>
-            <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                    <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                    <label for="remember-me" class="ml-2 block text-sm text-gray-900">Remember me</label>
+            <div class="w-full lg:w-1/2 px-8 py-12 lg:px-12">
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-bold text-gray-800">Create Account</h1>
+                    <p class="text-gray-600 mt-2">Start your journey with us</p>
                 </div>
-                <div class="text-sm">
-                    <a href="#" class="font-medium text-blue-600 hover:text-blue-500">Forgot password?</a>
-                </div>
-            </div>
-            <div>
-                <button type="submit" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200">
-                    <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                        <i class="fas fa-sign-in-alt text-blue-500 group-hover:text-blue-400"></i>
-                    </span>
-                    Sign in
-                </button>
-            </div>
-        </form>
-        <div class="text-center">
-            <p class="text-sm text-gray-600">Don't have an account? 
-                <a href="#" class="font-medium text-blue-600 hover:text-blue-500">Sign up now</a>
-            </p>
-        </div>
-        <div class="mt-6 flex items-center justify-center">
-            <div class="flex space-x-4">
-                <button class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                    <i class="fab fa-google text-gray-700"></i>
-                </button>
-                <button class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                    <i class="fab fa-facebook-f text-gray-700"></i>
-                </button>
-                <button class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                    <i class="fab fa-twitter text-gray-700"></i>
-                </button>
+                <form action="/register" method="POST" class="space-y-6">
+                    @csrf
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" for="name">
+                            Name
+                        </label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-3 text-gray-400">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" 
+                                placeholder="John Doe" 
+                                value="{{ old('name') }}" {{-- sirve para que si hay un error en el formulario, el valor que se ingresó previamente no se pierda --}}
+                                >
+                            
+                            @error('name')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                            
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" for="username">
+                            Username
+                        </label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-3 text-gray-400">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <input type="text" id="username" name="username" class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Your Username" >
+                            
+                            @error('username')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" for="email">
+                            Email Address
+                        </label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-3 text-gray-400">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <input type="email" id="email" name="email" class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="you@example.com" >
+                        
+                            @error('email')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" for="password">
+                            Password
+                        </label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-3 text-gray-400">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <input type="password" id="password" name="password" class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="••••••••" >
+                        
+                            @error('password')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2" for="confirm-password">
+                            Confirm Password
+                        </label>
+                        <div class="relative">
+                            <span class="absolute left-3 top-3 text-gray-400">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <input type="password" id="password_confirmation" name="password_confirmation" class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="••••••••" >
+                        
+                        
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
+                        Create Account
+                    </button>
+                    
+                    <p class="text-center text-gray-600">
+                        Already have an account?
+                        <a href="/login" class="text-blue-600 hover:text-blue-700 font-medium">Sign in</a>
+                    </p>
+                </form>
             </div>
         </div>
     </div>
-</div>
 @endsection
