@@ -56,7 +56,13 @@ Sign up in DevStagram
                             <span class="absolute left-3 top-3 text-gray-400">
                                 <i class="fas fa-user"></i>
                             </span>
-                            <input type="text" id="username" name="username" class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Your Username" >
+                            <input 
+                                type="text"
+                                id="username"
+                                name="username"
+                                class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="Your Username" 
+                                value="{{ old('username') }}" {{-- sirve para que si hay un error en el formulario, el valor que se ingresó previamente no se pierda --}}
+                                >
                             
                             @error('username')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -72,7 +78,14 @@ Sign up in DevStagram
                             <span class="absolute left-3 top-3 text-gray-400">
                                 <i class="fas fa-envelope"></i>
                             </span>
-                            <input type="email" id="email" name="email" class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="you@example.com" >
+                            <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            placeholder="you@example.com" 
+                            class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" 
+                            value="{{ old('email') }}"
+                            >
                         
                             @error('email')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -88,7 +101,13 @@ Sign up in DevStagram
                             <span class="absolute left-3 top-3 text-gray-400">
                                 <i class="fas fa-lock"></i>
                             </span>
-                            <input type="password" id="password" name="password" class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="••••••••" >
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                placeholder="••••••••" 
+                                class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" 
+                                >
                         
                             @error('password')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -104,7 +123,13 @@ Sign up in DevStagram
                             <span class="absolute left-3 top-3 text-gray-400">
                                 <i class="fas fa-lock"></i>
                             </span>
-                            <input type="password" id="password_confirmation" name="password_confirmation" class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" placeholder="••••••••" >
+                            <input 
+                            type="password" 
+                            id="password_confirmation" 
+                            name="password_confirmation" 
+                            class="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" 
+                            placeholder="••••••••" 
+                            >
                         
                         
                         </div>
