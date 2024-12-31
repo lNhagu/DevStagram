@@ -18,12 +18,13 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        $credentials = Auth::attempt($request->only('email', 'password')); 
+        $credentials = Auth::attempt($request->only('email', 'password'), $request->remember); 
 
         if (!$credentials) {
             return back()->withErrors([
@@ -31,7 +32,7 @@ class LoginController extends Controller
             ]);
         }
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index', Auth::user());
 
     }
 }

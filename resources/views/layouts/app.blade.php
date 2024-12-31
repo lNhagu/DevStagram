@@ -9,6 +9,9 @@
         
     </head>
     <body class="bg-gray-100">
+
+        {{-- sidebar --}}
+        
         
         {{-- header --}}
         <header class="p-5 border-b bg-white shadow">
@@ -18,16 +21,61 @@
                     <a href="/">DevStagram</a>
                 </h1>
 
+                @auth
+                <nav class="">
+                    <form method="POST" action="/logout">
+                        @csrf
+                        <button type="submit" class="font-bold text-gray-600 p-1" href="/logout">Logout</button>
+                    </form>
+                </nav>
+                
+                @endauth
+
+                @guest
                 <nav class="">
                     <a class="font-bold text-gray-600 p-1" href="/login">Login</a>
                     <a class="font-bold text-gray-600 p-1" href="/register">Sing up</a>
                 </nav>
+                @endguest
                 
             </div>
 
            
 
         </header>
+        @auth
+        <aside class="mt-1 hidden lg:block w-64 bg-white h-screen shadow-md fixed">
+            <div class="flex flex-col p-4">
+                <!-- Logo -->
+                <div class="text-2xl font-bold mb-8">DevsTagram</div>
+                
+                <!-- Menu -->
+                <nav class="flex flex-col space-y-8 text-xl ">
+                    <a href="#" class="flex items-center text-gray-600 hover:text-blue-500 ">
+                        <i class="fas fa-home"></i>
+                        <span class="ml-4">Home</span>
+                    </a>
+                    <a href="#" class="flex items-center text-gray-600 hover:text-blue-500 ">
+                        <i class="fas fa-search"></i>
+                        <span class="ml-4">Search</span>
+                    </a>
+                    <a href="#" class="flex items-center text-gray-600 hover:text-blue-500 ">
+                        <i class="fas fa-compass"></i>
+                        <span class="ml-4">Explore</span>
+                    </a>
+                    <a href="#" class="flex items-center text-gray-600 hover:text-blue-500 ">
+                        <i class="fas fa-bell"></i>
+                        <span class="ml-4">Notifications</span>
+                    </a>
+                    <a href="/{{ auth()->user()->username }}" class="flex items-center text-gray-600 hover:text-blue-500 ">
+                        <i class="fas fa-user"></i>
+                        <span class="ml-4">Profile</span>
+                    </a>
+                </nav>
+            </div>
+        </aside>
+        @endauth
+        
 
         <main class="container mx-auto mt-3">
             {{-- <h2 class="font-bold text-center text-3xl mb-3">
