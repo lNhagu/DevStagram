@@ -6,15 +6,17 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <title>DevStagram | @yield('titulo')</title>
         @vite('resources/css/app.css')
+        {{-- alpinejs --}}
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x/dist/cdn.min.js" defer></script> 
         
     </head>
-    <body class="bg-gray-100">
+    <body class="bg-gray-100" x-data="{ isSidebarOpen: false }">
 
         {{-- sidebar --}}
         
         
         {{-- header --}}
-        <header class="p-5 border-b bg-white shadow">
+        <header class="hidden lg:block p-5 border-b bg-white shadow">
 
             <div class="container mx-auto flex justify-between items-center">
                 <h1 class="text-3xl font-black">
@@ -43,8 +45,9 @@
            
 
         </header>
+
         @auth
-        <aside class="mt-1 hidden lg:block w-64 bg-white h-screen shadow-md fixed">
+        <aside :class="isSidebarOpen ? 'block' : 'hidden'" class="mt-1 lg:block w-64 bg-white h-screen shadow-md fixed">
             <div class="flex flex-col p-4">
                 <!-- Logo -->
                 <div class="text-2xl font-bold mb-8">DevsTagram</div>
@@ -74,6 +77,14 @@
                 </nav>
             </div>
         </aside>
+
+
+        <!-- Mobile Menu -->
+        <div class="lg:hidden fixed top-4 left-4">
+            <button @click="isSidebarOpen = !isSidebarOpen" class="p-2 bg-blue-500 text-white rounded-full shadow-md">
+                <span><i class="fas fa-bars"></i></span>
+            </button>
+        </div>
         @endauth
         
 
