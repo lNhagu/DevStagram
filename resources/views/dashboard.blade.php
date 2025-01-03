@@ -5,35 +5,7 @@ Dashboard
 @endsection
 
 @section('contenido')
-    {{-- <div class="flex justify-center">
-        <div class="w-full md:w-8/12 lg:w-6/12 md:flex">
-            <div class="md:w-8/12 lg:w-6/12 px-5">
-                <img src="{{asset('img/usuario.svg')}}" alt="imagen_usuario">
-            </div>
-            <div class="w-full md:w-8/12 lg:w-6/12 px-5 md:flex md:flex-auto md:justify-center">
-                <p class="text-gray-700 text-2xl w-full">{{$user->username}}</p>
-            </div>
-
-            <!-- Stats -->
-            <div class="flex justify-around mt-6 border-t border-gray-200 pt-4">
-                <div class="text-center">
-                    <span class="text-xl font-bold">50</span>
-                    <p class="text-gray-500">Posts</p>
-                </div>
-                <div class="text-center">
-                    <span class="text-xl font-bold">1.2k</span>
-                    <p class="text-gray-500">Followers</p>
-                </div>
-                <div class="text-center">
-                    <span class="text-xl font-bold">300</span>
-                    <p class="text-gray-500">Following</p>
-                </div>
-            </div>
-        </div>
-
-    </div> --}}
-
-    <div class="max-w-4xl mx-auto p-4 bg-white shadow-md rounded-lg">
+   <div class="max-w-4xl mx-auto p-4 bg-white shadow-md rounded-lg">
         <!-- Header -->
         <div class="flex items-center justify-between">
             <div class="flex items-center">

@@ -10,9 +10,8 @@
         <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x/dist/cdn.min.js" defer></script> 
         
     </head>
-    <body class="bg-gray-100" x-data="{ isSidebarOpen: false }">
+    <body class=" bg-gray-100" x-data="{ isSidebarOpen: false }">
 
-        {{-- sidebar --}}
         
         
         {{-- header --}}
@@ -45,9 +44,10 @@
            
 
         </header>
-
+        <div class="flex">
+        {{-- sidebar --}}
         @auth
-        <aside :class="isSidebarOpen ? 'block' : 'hidden'" class="mt-1 lg:block w-64 bg-white h-screen shadow-md fixed">
+        <aside :class="isSidebarOpen ? 'block' : 'hidden'" class="w-64 mt-1 lg:block bg-white h-screen shadow-md fixed">
             <div class="flex flex-col p-4">
                 <!-- Logo -->
                 <div class="text-2xl font-bold mb-8">DevsTagram</div>
@@ -70,6 +70,32 @@
                         <i class="fas fa-bell"></i>
                         <span class="ml-4">Notifications</span>
                     </a>
+
+                    {{-- create --}}
+                    <div class="relative" x-data="{ open: false }">
+                        <a href="#" @click="open = !open" class="flex items-center text-gray-600 hover:text-blue-500">
+                            <i class="fas fa-plus-square"></i>
+                            <span class="ml-4">Create</span>
+                        </a>
+                        <div 
+                        x-show="open" @click.away="open = false" 
+                        x-transition:enter="transition ease-out duration-200" 
+                        x-transition:enter-start="opacity-0 transform scale-95" 
+                        x-transition:enter-end="opacity-100 transform scale-100" 
+                        x-transition:leave="transition ease-in duration-75" 
+                        x-transition:leave-start="opacity-100 transform scale-100" 
+                        x-transition:leave-end="opacity-0 transform scale-95"
+                        class="absolute bg-white text-gray-600 mt-2 py-2 w-full border rounded-lg shadow">
+                            <a href="{{ route('posts.create') }}" class="flex justify-between items-center px-4 py-2 hover:bg-gray-100 w-full" >
+                                <span>Create Post  </span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
                     <a href="/{{ auth()->user()->username }}" class="flex items-center text-gray-600 hover:text-blue-500 ">
                         <i class="fas fa-user"></i>
                         <span class="ml-4">Profile</span>
@@ -88,13 +114,13 @@
         @endauth
         
 
-        <main class="container mx-auto mt-3">
-            {{-- <h2 class="font-bold text-center text-3xl mb-3">
-                @yield('titulo')
-            </h2> --}}
+        <main class=" lg:ml-96 flex items-center container mx-auto mt-3">
+            
             @yield('contenido')
         </main>
-
+        
+    </div>
+        {{-- footer --}}
         <footer class=" text-sm text-center p-5 font-semibold text-gray-400">
             © DevStagram - Todos los derechos reservados - {{ now()->year }}
         </footer>
